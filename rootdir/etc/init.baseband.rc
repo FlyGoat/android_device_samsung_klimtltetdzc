@@ -1,19 +1,34 @@
-on init
-    mkdir /efs 0771 radio system
-    symlink /dev/block/mmcblk0p13 /dev/mbin0
-    restorecon /dev/mbin0
-    symlink  /sys/devices/platform/s5p-ehci/ehci_power /dev/ehci_power
+#MDM requirement
+    mkdir /dev/block/modem
+    symlink /dev/block/platform/dw_mmc.0/by-name/m9kefs1 /dev/block/modem/m9kefs1
+    symlink /dev/block/platform/dw_mmc.0/by-name/m9kefs2 /dev/block/modem/m9kefs2
+    symlink /dev/block/platform/dw_mmc.0/by-name/m9kefs3 /dev/block/modem/m9kefs3
+    symlink /dev/block/platform/dw_mmc.0/by-name/ /dev/block/modem/dump_path
+    chown system radio /dev/block/modem/m9kefs1
+    chmod 0775 /dev/block/modem/m9kefs1
+    chown system radio /dev/block/modem/m9kefs2
+    chmod 0775 /dev/block/modem/m9kefs2
+    chown system radio /dev/block/modem/m9kefs3
+    chmod 0775 /dev/block/modem/m9kefs3
+    chown system radio /dev/block/modem/dump_path
+    chmod 0775 /dev/block/modem/dump_path
 
-    write /sys/module/modem_link_pm_xmm626x/parameters/l2_delay 500
-    write /sys/module/modem_link_pm_xmm626x/parameters/hub_delay 500
-    write /sys/module/modem_link_device_hsic_4ncm/parameters/tx_qlen 50
+    mkdir /firmware 0771 system system
+    mount vfat /dev/block/mmcblk0p13 /firmware ro shortname=lower fmask=0133,dmask=0022
+    chown system system /tombstones
+    chmod 0775 /tombstones
+    mkdir /tombstones/modem 0775 system system
+    mkdir /tombstones/lpass 0775 system system
+    mkdir /tombstones/wcnss 0775 system system
+    mkdir /tombstones/dsps 0775 system system
+    rmdir /tombstones/qcks
+    mkdir /tombstones/qcks 771 system system
+    rmdir /tombstones/efs
+    mkdir /tombstones/efs 771 system system
 
-on fs
+    chown system radio /dev/block/platform/dw_mmc.0/by-name
+    chmod 0775 /dev/block/platform/dw_mmc.0/by-name
+
+# Permission for EFS
     chown radio system /efs
     chmod 0771 /efs
-
-    chown radio radio /sys/devices/virtual/misc/multipdp/waketime
-    chmod 0660 /sys/devices/virtual/misc/umts_dm0/dm_state
-    chown radio system /sys/devices/virtual/misc/umts_dm0/dm_state
-    chown radio radio /sys/devices/platform/s5p-ehci/ehci_cpu_core
-

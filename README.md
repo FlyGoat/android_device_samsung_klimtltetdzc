@@ -1,1 +1,1 @@
-# android_device_samsung_klimtlte
+# android_device_samsung_klimtltetdzc

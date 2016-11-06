@@ -20,10 +20,10 @@ PRODUCT_PACKAGES += \
     init.baseband.rc
 
 PRODUCT_COPY_FILES += \
-    device/samsung/klimtlte/audio/audio_policy.conf:system/etc/audio_policy.conf
+    device/samsung/klimtltetdzc/audio/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
-    device/samsung/klimtlte/audio/mixer_paths.xml:system/etc/mixer_paths.xml
+    device/samsung/klimtltetdzc/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -31,7 +31,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 DEVICE_PACKAGE_OVERLAYS := \
-    device/samsung/klimtlte/overlay
+    device/samsung/klimtltetdzc/overlay
 
 # Radio (needed for audio controls even on wifi-only)
 PRODUCT_PACKAGES += \
@@ -40,7 +40,7 @@ PRODUCT_PACKAGES += \
     rild
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carrier=unknown 
+    ro.carrier=unknown
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -51,4 +51,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, vendor/samsung/klimtlte/klimtlte-vendor.mk)
+$(call inherit-product, vendor/samsung/klimtltetdzc/klimtltetdzc-vendor.mk)

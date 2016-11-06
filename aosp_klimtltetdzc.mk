@@ -25,16 +25,16 @@ PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.
 ##$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-PRODUCT_NAME := klimtltexx
+PRODUCT_NAME := klimtltetdzc
 PRODUCT_DEVICE := klimtlte
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SM-T705
+PRODUCT_MODEL := SM-T705C
 PRODUCT_MANUFACTURER := samsung
 
 $(call inherit-product, device/samsung/chagall-klimt-common/device.mk)
-$(call inherit-product, device/samsung/klimtlte/device.mk)
+$(call inherit-product, device/samsung/klimtltetdzc/device.mk)
 
-$(call inherit-product-if-exists, vendor/samsung/klimtlte/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/klimtltetdzc/device-vendor.mk)
 
 PRODUCT_NAME := aosp_klimtlte
 
@@ -43,4 +43,3 @@ PRODUCT_PACKAGES += \
     OneTimeInitializer \
     Gallery2 \
     OpenDelta
-
